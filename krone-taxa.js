@@ -23,7 +23,12 @@ class FakeClock{
 
 class kronetaxavogn{
     calulatePrice(afstand, tidgaaet){
-        return (8.50*(afstand)) + (6.25*tidgaaet + 39)
+        var price = (9*(afstand-1));
+        var under1km = (5*Math.min(1, afstand));
+        var tidpris = (6.25*tidgaaet + 39);
+        
+
+        return price + under1km + tidpris;
     }
 }
 
