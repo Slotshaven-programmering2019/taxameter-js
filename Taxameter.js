@@ -24,6 +24,10 @@ class Taxameter {
         this.clock = clock;
     } 
 
+    getStartetTidspunkt() {
+        return this.turStartetTidspunkt;
+    }
+
     startTur() {
         this.turStartetTidspunkt = new Date();
       
