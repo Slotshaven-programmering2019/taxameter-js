@@ -33,4 +33,7 @@ class kronetaxavogn{
 }
 
 var clock = new RealClock();
-start(new Taxameter(clock,new kronetaxavogn()));
+const taxameter = new Taxameter(clock, new kronetaxavogn);
+const Decoator1 = new TaxameterDecorator(taxameter);
+const decoator2 = new taxameterDecoratortæller(Decoator1);
+start(decoator2);

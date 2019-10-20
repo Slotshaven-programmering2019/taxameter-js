@@ -52,3 +52,87 @@ class Taxameter {
        
     }
 }
+
+class TaxameterDecorator {
+
+    constructor(Taxameter){
+        this.taxameter = Taxameter;
+        this.koerer = "Marinus"
+    }
+
+    getStartetTidspunkt() {
+        return this.taxameter.getStartetTidspunkt();
+    }
+
+  /*  get afstand(){
+      return this.taxameter.afstand();
+
+    }*/
+    startTur() {
+      const tur = this.taxameter.startTur();
+        console.log('Nu køre ${this.koerer}');
+       return tur;
+      
+    }
+
+    slutTur() {
+      const tur = this.taxameter.slutTur();
+        console.log("Nu er Valdemar tilbage");
+      return tur;
+    }
+
+    koer(delta_afst) {
+      return this.taxameter.koer(delta_afst);
+    }
+
+    beregnPris() {
+      return this.taxameter.beregnPris();
+       
+    }
+}
+
+class taxameterDecoratortæller {
+  constructor (taxameter) {
+      this.taxameter = taxameter;
+      this.Kort = 0;
+      this.Lang = 0;
+  }
+
+  getStartetTidspunkt() {
+      return this.taxameter.getStartetTidspunkt();
+  }
+
+  get afstand() {
+      return this.taxameter.afstand;
+  }
+
+  startTur() {
+      return this.taxameter.startTur();  
+  }
+
+  get procentKorteTure(){
+      return (this.Kort/(this.Kort + this.Lang))*100;
+  }
+  get procentLangeTure(){
+      return (this.Lang/(this.Kort + this.Lang))*100;
+  }
+
+  slutTur() {
+      if (this.afstand < 1){
+          this.Kort += 1;
+      }else{
+          this.Lang += 1;
+      }
+      console.log(this.procentKorteTure + "% ture er < 1 km");
+      console.log(this.procentLangeTure + "% ture er > 1 km");
+      return this.taxameter.slutTur();
+  }
+
+  koer(delta_afst) {
+      return this.taxameter.koer(delta_afst);
+  }
+
+  beregnPris() {
+      return this.taxameter.beregnPris();
+  }
+}

@@ -8,19 +8,25 @@ class TaxameterDecorator {
         return this.taxameter.getStartetTidspunkt();
     }
 
+    get afstand(){
+      return this.taxameter.afstand();
+
+    }
     startTur() {
-        console.log("Nu køre Valdemar")
-       return this.taxameter.startTur();
+      const tur = this.taxameter.startTur();
+        console.log("Nu køre Valdemar");
+       return tur;
       
     }
 
     slutTur() {
-        console.log("Nu er Valdemar tilbage")
-      return this.taxameter.slutTur()
+      const tur = this.taxameter.slutTur();
+        console.log("Nu er Valdemar tilbage");
+      return tur;
     }
 
     koer(delta_afst) {
-      return this.taxameter.koer();
+      return this.taxameter.koer(delta_afst);
     }
 
     beregnPris() {
